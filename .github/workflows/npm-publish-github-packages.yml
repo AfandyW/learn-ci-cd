@@ -11,7 +11,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - name: Deploy sync ssh
         uses: appleboy/ssh-action@master
         with:
@@ -20,7 +19,7 @@ jobs:
           key: ${{secrets.PRIVATE_KEY}}
           port: 22
           script: |
-            cd /home/alexia/apps/learn-ci-cd
+            cd ~/apps/learn-ci-cd
             git pull origin master
             git status
             npm i --only=prod
